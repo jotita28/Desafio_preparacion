@@ -1,0 +1,37 @@
+<h5><%= notice %></h5>
+
+<div class="container">
+<h4>Productos: </h4>
+<table class="table table-dark">
+<tr>
+<th>Nombre</th>
+<th>Precio</th>
+<th>Descripción</th>
+<th>Eliminar</th>
+</tr>
+<tr>
+<% @products.each do |product|%>
+<td><%= product.name %></td>
+<td><%= product.price %></td>
+<td><%= product.description %></td>
+<td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td> 
+</tr>
+<% end %>
+</table>
+</div>
+
+<div class="container"> 
+<h3>Ingrese un producto: </h3>
+
+
+<%= form_with(model: @product, local: true) do |form| %>
+<%= form.label :name%>
+<%= form.text_field :name%>
+<%= form.label :price%>
+<%= form.number_field :price%>
+<%= form.label :description%>
+<%= form.text_area :description%>
+<%= form.submit 'Create'%>
+
+<% end %>
+</div>
